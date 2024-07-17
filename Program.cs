@@ -1,16 +1,15 @@
 using ExpenseTracker.Components;
 using ExpenseTracker.Data;
+using ExpenseTracker.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-//builder.Services.AddRazorPages();
+builder.Services.AddRazorPages();
+builder.Services.AddServerSideBlazor();
 builder.Services.AddRazorComponents().AddInteractiveServerComponents();
-
-
-//builder.Services.AddServerSideBlazor();
-
+builder.Services.AddScoped<CategoryService>();
 
 
 //Configure the database context and connection

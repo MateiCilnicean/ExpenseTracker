@@ -1,16 +1,19 @@
-﻿using ExpenseTracker.Data.Models;
+﻿using ExpenseTracker.Data;
+using ExpenseTracker.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExpenseTracker.Data
 {
     public class ExpenseTrackerContext : DbContext
     {
+        public DbSet<Expense> Expenses { get; set; }
+        public DbSet<Income> Incomes { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+
         public ExpenseTrackerContext(DbContextOptions<ExpenseTrackerContext> options)
             :base(options)
         {
         }
-
-        public virtual DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
